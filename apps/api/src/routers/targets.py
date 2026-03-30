@@ -30,7 +30,9 @@ async def get_target(target_id: str, user: dict = Depends(get_current_user)):
 
 
 @router.patch("/{target_id}", response_model=TargetResponse)
-async def update_target(target_id: str, update: TargetUpdate, user: dict = Depends(get_current_user)):
+async def update_target(
+    target_id: str, update: TargetUpdate, user: dict = Depends(get_current_user)
+):
     """Update an existing target."""
     # TODO: Implement with DB update
     raise NotImplementedError

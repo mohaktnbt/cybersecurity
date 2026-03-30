@@ -9,5 +9,5 @@ router = APIRouter()
 async def webhook_scan_trigger(request: Request):
     """Trigger a scan from CI/CD pipeline webhook."""
     # TODO: Validate webhook signature, enqueue scan
-    body = await request.json()
+    await request.json()
     return {"status": "accepted", "message": "Scan queued"}

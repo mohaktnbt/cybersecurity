@@ -1,12 +1,12 @@
 """SQLAlchemy models for HexStrike."""
 
 from .base import Base
+from .finding import AttackChain, Finding
 from .organization import Organization
-from .user import User, OrgMembership
-from .target import Target
-from .scan import Scan, ScanEvent
-from .finding import Finding, AttackChain
 from .report import Report
+from .scan import Scan, ScanEvent
+from .target import Target
+from .user import OrgMembership, User
 
 __all__ = [
     "Base",

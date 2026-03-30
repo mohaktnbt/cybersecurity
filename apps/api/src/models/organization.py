@@ -1,9 +1,8 @@
 """Organization (tenant) model."""
 
-import uuid
 
 from sqlalchemy import String, text
-from sqlalchemy.dialects.postgresql import JSONB, UUID
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base, TimestampMixin, UUIDMixin

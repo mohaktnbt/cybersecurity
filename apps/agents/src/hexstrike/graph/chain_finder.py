@@ -12,16 +12,14 @@ class ChainFinder:
     async def find_chains(self, max_depth: int = 5) -> list[dict]:
         """Find all multi-step attack paths up to max_depth."""
         async with self.driver.session() as session:
-            result = await session.run(
-                """
-                MATCH path = (start:Vulnerability)-[:ENABLES*1..%d]->(end:Vulnerability)
-                WHERE start <> end
-                RETURN path, length(path) as depth
-                ORDER BY depth DESC
-                LIMIT 50
-                """
-                % max_depth
+            query = (
+                "MATCH path = (start:Vulnerability)-[:ENABLES*1.."
+                f"{max_depth}]->(end:Vulnerability) "
+                "WHERE start <> end "
+                "RETURN path, length(path) as depth "
+                "ORDER BY depth DESC LIMIT 50"
             )
+            result = await session.run(query)
             chains = []
             async for record in result:
                 chains.append({
